@@ -1,0 +1,95 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<!--<meta http-equiv="cache-control" content="no-cache" />-->
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+    <!-- Font Awesome for great icons (used in mermaid) -->
+    <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css"> -->
+    <!-- Mermaid -->
+    <!-- Custom theme styles -->
+    <style>
+        .sidebar::-webkit-scrollbar {
+            width: 10px;
+        }/* ... */
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img.cover {
+            width: 100;
+            height: 100;
+        }
+    </style>
+  
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        //...
+        loadSidebar: true,
+        routerMode: 'history',
+        alias: {
+          '/.*/_sidebar.md': '/_sidebar.md',
+        },
+        subMaxLevel: 3,
+        relativePath: false,
+        //homepage: 'docs-home.md',
+        name: '',
+        coverpage: true,
+        onlyCover: true,
+        // create custom headings for Flexible Alerts
+        'flexible-alerts': {
+          note: {
+            label: "Note"
+          },
+          tip: {
+            label: "Tip"
+          },
+          warning: {
+            label: "Caution"
+          },
+          danger: {
+            label: "Attention"
+          },
+          style: 'callout'
+        },  
+        plugins: [
+      function(hook, vm) {
+      hook.beforeEach(function(html) {
+        var url =
+          'https://tfs.insi.com/Energy-EEDSM/Docs/_git/techdocs/?path=%2F'.concat(vm.route.file,"&version=GBmaster&_a=contents") ;
+        var editHtml = '[Edit this page](' + url + ')\n';
+        return (
+          html +
+          '\n----\n' +
+          editHtml 
+        );
+      });
+    }
+    ]
+      }
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+    <!-- plugins -->
+
+    <!-- collapse the sidebar automatically -->
+    <script src="//unpkg.com/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+    <!-- enable search bar -->
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <!-- enable "copy code" button on code chunks -->
+    <script src="https://unpkg.com/docsify-copy-code@2"></script> -->
+    <!-- enable flexible alerts plugin https://github.com/fzankl/docsify-plugin-flexible-alerts -->
+    <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+    <!-- Enable mermaid diagrams -->
+    <script src="//unpkg.com/mermaid/dist/mermaid.js"></script>
+    <script src="//unpkg.com/docsify-mermaid@latest/dist/docsify-mermaid.js"> 
+    <script>mermaid.initialize({ startOnLoad: true });</script>
+
+  </body>
+</html>
